@@ -4,15 +4,15 @@ import { NotionRenderer } from "@notion-render/client";
 import hljsPlugin from "@notion-render/hljs-plugin";
 import Image from "next/image";
 
-export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
+export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
   const postMeta = await fetchBySlug(slug);
 
   if (!postMeta) {
     return {
       title: `Post not found - Jack Cox`,
       description: `Post not found.`,
-    };
+    }
   }
 
   const title =
@@ -23,12 +23,11 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
   return {
     title: `${title} - Jack Cox`,
     description: `Read the blog post "${title}" by Jack Cox.`,
-  };
-};
+  }
+}
 
-
-const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
+const SinglePostPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
 
   const post = await fetchBySlug(slug);
 
