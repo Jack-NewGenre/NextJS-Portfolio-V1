@@ -20,7 +20,19 @@ const dmMono = DM_Mono({
 
 export const metadata: Metadata = {
   title: "Jack Cox Portfolio",
-  description: "Personal portfolio project",
+  description: "Developer Portfolio",
+  openGraph: {
+    title: "Jack Cox Portfolio",
+    description: "Developer Portfolio",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Jack Cox Portfolio",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
