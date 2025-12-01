@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
+export const metadata = {
+    title: "About me - Jack Cox",
+    description: "Learn more about Jack Cox, a developer at New Genre"
+};
+
 const AboutPage = () => {
     return ( 
         <div className="pt-40 px-4 md:px-8 pb-16 bg-background w-full mx-auto">
