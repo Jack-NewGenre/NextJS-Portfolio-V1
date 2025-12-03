@@ -21,9 +21,12 @@ const dmMono = DM_Mono({
 export const metadata: Metadata = {
   title: "Jack Cox Portfolio",
   description: "Developer Portfolio",
+  keywords: ['Full stack developer', 'React', 'Next.js'],
+  creator: 'Jack Cox',
   openGraph: {
     title: "Jack Cox Portfolio",
     description: "Developer Portfolio",
+    siteName: 'Jack Cox Developer Portfolio',
     images: [
       {
         url: "/opengraph-image",
