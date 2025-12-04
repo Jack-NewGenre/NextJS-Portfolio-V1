@@ -30,9 +30,9 @@ const Footer = () => {
             <div className="flex justify-between items-center">
                 <ul className="flex gap-4 text-base uppercase text-foreground">
                     <li>Socials:</li>
-                    <li><Link href="https://www.instagram.com" target="_blank" className="hover:line-through">IG</Link></li>
-                    <li><Link href="https://www.linkedin.com" target="_blank" className="hover:line-through">LI</Link></li>
-                    <li><Link href="https://www.twitter.com" target="_blank" className="hover:line-through">X</Link></li>
+                    <li><Link href="https://www.instagram.com" rel="nofollow" target="_blank" className="hover:line-through">IG</Link></li>
+                    <li><Link href="https://www.linkedin.com" rel="nofollow" target="_blank" className="hover:line-through">LI</Link></li>
+                    <li><Link href="https://www.twitter.com" rel="nofollow" target="_blank" className="hover:line-through">X</Link></li>
                 </ul>
                 <p className="text-base text-foreground uppercase">© 2025 Jack Cox.</p>
             </div>

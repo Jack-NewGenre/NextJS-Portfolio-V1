@@ -69,7 +69,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image, date, service })
         <div className='flex justify-between items-center w-[90vw] px-1'>
             <div className="flex items-center gap-4">
                 <span className="text-sm text-background font-mono md:text-base">/ {date}</span>
-                <h4 className='text-xl uppercase text-background sm:text-4xl md:text-6xl'>{text}</h4>
+                <h3 className='text-xl uppercase text-background sm:text-4xl md:text-6xl'>{text}</h3>
             </div>
             <div
             className="w-60 h-30 bg-cover bg-center hidden md:block"
@@ -94,7 +94,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image, date, service })
       >
         <div className="flex items-center gap-4">
             <span className="text-sm font-mono md:text-base">/ {date}</span>
-            <h4 className='text-xl uppercase sm:text-4xl md:text-6xl'>{text}</h4>
+            <h3 className='text-xl uppercase sm:text-4xl md:text-6xl'>{text}</h3>
         </div>
         <div className='flex items-center'>
             <span className="text-sm font-mono text-right hidden sm:block md:text-base">{service}</span>

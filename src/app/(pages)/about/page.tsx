@@ -9,10 +9,10 @@ export const metadata = {
 const AboutPage = () => {
     return ( 
         <div className="pt-40 px-4 md:px-8 pb-16 bg-background w-full mx-auto">
-            <h2 className="text-8xl mb-15">Hey, I&apos;m Jack</h2>
+            <h1 className="text-8xl mb-15">Hey, I&apos;m Jack</h1>
             <div className="flex flex-col justify-between md:flex-row gap-16 md:gap-0">
                 <div className="w-full md:w-4/9">
-                    <p className="text-base text-foreground mb-8">Jack joined New Genre in 2025 as a developer, bringing with him a curiosity for how things work powered by a talent for making ideas real.</p>
+                    <h2 className="text-base text-foreground mb-8">Jack joined New Genre in 2025 as a developer, bringing with him a curiosity for how things work powered by a talent for making ideas real.</h2>
                     <p className="text-base text-foreground mb-8">He approaches problems like puzzles waiting to be solved, quick to build, quick to adapt, and always open to feedback &mdash; taking joy in the process as much as the outcome.</p>
                     <p className="text-base text-foreground mb-8">His path began in digital marketing, where he first brushed against digital design before realising it was the gritty workings &mdash; the code beneath &mdash; that truly sparked his interest. That shift led him into development, where he discovered not just the satisfaction of fixing complex problems, but the momentum of always learning; each new skill building on the last, each challenge unlocking the next.</p>
                     <p className="text-base text-foreground mb-8">Outside the studio, Jack is fuelled by media and movement. He&apos;ll happily lose himself in the world of fantasy (Lord of the Rings remains a favourite), thrash through an agonising labyrinth in Dark Souls, or soundtrack his day with My Chemical Romance&apos;s Black Parade. He runs, lifts, and chases any sport that tests his coordination &mdash; even if, by his own admission, it&apos;s more for the teamwork than the trophy.</p>
@@ -25,10 +25,10 @@ const AboutPage = () => {
                             </div>
                             <div className="w-1/2">
                                 <ul>
-                                    <li><Link href={"https://newgenre.studio/"} target="_blank" className="text-sm text-foreground uppercase hover:line-through">New genre</Link></li>
-                                    <li><Link href={"#"} target="_blank" className="text-sm text-foreground uppercase hover:line-through">Portfolio</Link></li>
-                                    <li><Link href={"https://jazatland.com/"} target="_blank" className="text-sm text-foreground uppercase hover:line-through">J.A Zatland</Link></li>
-                                    <li><Link href={"https://narratives.work/"} target="_blank" className="text-sm text-foreground uppercase hover:line-through">Narratives Work</Link></li>
+                                    <li><Link href={"https://newgenre.studio/"} rel="nofollow" target="_blank" className="text-sm text-foreground uppercase hover:line-through">New genre</Link></li>
+                                    <li><Link href={"#"} target="_blank" rel="nofollow" className="text-sm text-foreground uppercase hover:line-through">Portfolio</Link></li>
+                                    <li><Link href={"https://jazatland.com/"} rel="nofollow" target="_blank" className="text-sm text-foreground uppercase hover:line-through">J.A Zatland</Link></li>
+                                    <li><Link href={"https://narratives.work/"} rel="nofollow" target="_blank" className="text-sm text-foreground uppercase hover:line-through">Narratives Work</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -52,9 +52,9 @@ const AboutPage = () => {
                             </div>
                             <div className="w-1/2">
                                 <ul>
-                                    <li><Link href={"#"} target="_blank" className="text-sm text-foreground uppercase hover:line-through">Instagram</Link></li>
-                                    <li><Link href={"#"} target="_blank" className="text-sm text-foreground uppercase hover:line-through">LinkedIn</Link></li>
-                                    <li><Link href={"#"} target="_blank" className="text-sm text-foreground uppercase hover:line-through">X (Twitter)</Link></li>
+                                    <li><Link href={"#"} rel="nofollow" target="_blank" className="text-sm text-foreground uppercase hover:line-through">Instagram</Link></li>
+                                    <li><Link href={"#"} rel="nofollow" target="_blank" className="text-sm text-foreground uppercase hover:line-through">LinkedIn</Link></li>
+                                    <li><Link href={"#"} rel="nofollow" target="_blank" className="text-sm text-foreground uppercase hover:line-through">X (Twitter)</Link></li>
                                 </ul>
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "../components/organisms/Header";
@@ -18,14 +18,21 @@ const dmMono = DM_Mono({
   weight: ["400"]
 });
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ]
+}
 export const metadata: Metadata = {
   title: "Jack Cox Portfolio",
-  description: "Developer Portfolio",
+  description: "Jack is a creative developer at New Genre, presenting a Next.js portfolio that highlights clean design, modern performance, and thoughtful digital craftsmanship across every project.",
   keywords: ['Full stack developer', 'React', 'Next.js'],
   creator: 'Jack Cox',
+  themeColor: "#fff",
   openGraph: {
     title: "Jack Cox Portfolio",
-    description: "Developer Portfolio",
+    description: "Jack is a creative developer at New Genre, presenting a Next.js portfolio that highlights clean design, modern performance, and thoughtful digital craftsmanship across every project.",
     siteName: 'Jack Cox Developer Portfolio',
     images: [
       {
@@ -36,6 +43,18 @@ export const metadata: Metadata = {
       },
     ],
   },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    }
+  }
 };
 
 export default function RootLayout({
