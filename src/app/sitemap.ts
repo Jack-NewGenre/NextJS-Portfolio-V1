@@ -3,7 +3,7 @@ import { PageObjectResponse, QueryDatabaseResponse } from "@notionhq/client/buil
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL || "http://localhost:3000";
+  const baseUrl = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` || `https://${process.env.VERCEL_URL}` || "http://localhost:3000";
 
     const posts: QueryDatabaseResponse = await fetchPages();
 
