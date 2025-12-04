@@ -12,7 +12,7 @@ const Header = () => {
     return ( 
         <header className="fixed top-0 left-0 w-full z-10 py-5 px-4 md:px-8 flex justify-between items-center gap-4">
             <div className="text-base font-bold uppercase flex-auto text-foreground">
-                <Link href="/">Jack© <span className="text-foreground/40 font-normal">Full-Stack Developer</span></Link>
+                <Link href="/" rel="nofollow">Jack© <span className="text-foreground/40 font-normal">Full-Stack Developer</span></Link>
             </div>
 
             <div className="items-center gap-2 flex-auto hidden sm:flex">
@@ -33,15 +33,15 @@ const Header = () => {
                 </button>
             </div>
 
-            <div className={`fixed inset-0 bg-background p-8 flex flex-col items-start justify-end transition-all duration-500
+            <nav className={`fixed inset-0 bg-background p-8 flex flex-col items-start justify-end transition-all duration-500
                 ${isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"}`}>
                     <ul className="text-6xl uppercase text-foreground flex flex-col md:text-9xl">
-                        <li><Link href="/" className="hover:line-through" onClick={() => setIsOpen(false)}>Home</Link></li>
-                        <li><Link href="/about" className="hover:line-through" onClick={() => setIsOpen(false)}>About</Link></li>
-                        <li><Link href="/blog" className="hover:line-through" onClick={() => setIsOpen(false)}>Blog</Link></li>
-                        <li><Link href="/contact" className="hover:line-through" onClick={() => setIsOpen(false)}>Contact</Link></li>
+                        <li><Link href="/" rel="nofollow" className="hover:line-through" onClick={() => setIsOpen(false)}>Home</Link></li>
+                        <li><Link href="/about" rel="nofollow" className="hover:line-through" onClick={() => setIsOpen(false)}>About</Link></li>
+                        <li><Link href="/blog" rel="nofollow" className="hover:line-through" onClick={() => setIsOpen(false)}>Blog</Link></li>
+                        <li><Link href="/contact" rel="nofollow" className="hover:line-through" onClick={() => setIsOpen(false)}>Contact</Link></li>
                     </ul>
-            </div>
+            </nav>
         </header>
     );
 }

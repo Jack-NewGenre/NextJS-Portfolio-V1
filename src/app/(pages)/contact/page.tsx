@@ -9,7 +9,7 @@ const ContactPage = () => {
         <div className="pt-40 px-4 pb-16 bg-background w-full md:px-8">
             <div className="flex justify-between flex-col gap-24 md:flex-row md:gap-16">
                 <div className="w-full md:w-1/2 lg:w-2/3">
-                    <h2 className="text-6xl mb-12 uppercase">Contact Me</h2>
+                    <h1 className="text-6xl mb-12 uppercase">Contact Me</h1>
                     <div className="flex flex-col gap-20 sm:flex-row md:flex-col lg:flex-row">
 
                         <div className="w-full sm:w-1/2 md:w-full lg:w-1/2">
@@ -26,16 +26,16 @@ const ContactPage = () => {
                             <div>
                                 <p className="text-sm text-foreground/60 uppercase">Email &amp; Phone</p>
                                 <ul>
-                                    <li><Link href={"mailto:coxy@newgenre.studio"} target="_blank" className="text-sm text-foreground uppercase hover:line-through">coxy@newgenre.studio</Link></li>
-                                    <li><Link href={"tel:+1234567890"} target="_blank" className="text-sm text-foreground uppercase hover:line-through">+1234567890</Link></li>
+                                    <li><Link href={"mailto:coxy@newgenre.studio"} rel="nofollow" target="_blank" className="text-sm text-foreground uppercase hover:line-through">coxy@newgenre.studio</Link></li>
+                                    <li><Link href={"tel:+1234567890"} rel="nofollow" target="_blank" className="text-sm text-foreground uppercase hover:line-through">+1234567890</Link></li>
                                 </ul>
                             </div>
                             <div>
                                 <p className="text-sm text-foreground/60 uppercase">Socials</p>
                                 <ul>
-                                    <li><Link href={"#"} target="_blank" className="text-sm text-foreground uppercase hover:line-through">Instagram</Link></li>
-                                    <li><Link href={"#"} target="_blank" className="text-sm text-foreground uppercase hover:line-through">LinkedIn</Link></li>
-                                    <li><Link href={"#"} target="_blank" className="text-sm text-foreground uppercase hover:line-through">X (Twitter)</Link></li>
+                                    <li><Link href={"#"} rel="nofollow" target="_blank" className="text-sm text-foreground uppercase hover:line-through">Instagram</Link></li>
+                                    <li><Link href={"#"} rel="nofollow" target="_blank" className="text-sm text-foreground uppercase hover:line-through">LinkedIn</Link></li>
+                                    <li><Link href={"#"} rel="nofollow" target="_blank" className="text-sm text-foreground uppercase hover:line-through">X (Twitter)</Link></li>
                                 </ul>
                             </div>
                         </div>
