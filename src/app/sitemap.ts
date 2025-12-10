@@ -1,27 +1,25 @@
-import { fetchPages } from "@/lib/notion";
-import { PageObjectResponse, QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
+import { client } from "@/sanity/client";
 import { MetadataRoute } from "next";
+import { defineQuery } from "next-sanity";
+
+const ALL_BLOGS_QUERY = defineQuery(`*[
+  _type == "blog" && defined(slug.current)
+]{
+  "slug": slug.current,
+  "lastModified": coalesce(_updatedAt, _createdAt, now())
+} | order(lastModified desc)`);
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` || `https://${process.env.VERCEL_URL}` || "http://localhost:3000";
 
-    const posts: QueryDatabaseResponse = await fetchPages();
+  const blogs = await client.fetch(ALL_BLOGS_QUERY);
 
-    const postEntries: MetadataRoute.Sitemap = posts.results
-    .filter(
-        (post): post is PageObjectResponse =>
-        post.object === "page" && "properties" in post
-    )
-    .map((post) => {
-        const slug = post.properties.Slug.type === "rich_text"? post.properties.Slug.rich_text[0]?.plain_text ?? "": "";
-
-        return {
-            url: `${baseUrl}/blog/${slug}`,
-            lastModified: new Date(post.last_edited_time).toISOString(),
-            changeFrequency: "monthly" as const,
-            priority: 0.7,
-        };
-    });
+  const blogEntries: MetadataRoute.Sitemap = blogs.map((blog: { slug: string; lastModified: string }) => ({
+    url: `${baseUrl}/blog/${blog.slug}`,
+    lastModified: new Date(blog.lastModified).toISOString(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
 
   return [
     {
@@ -48,6 +46,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.5,
     },
-    ...postEntries,
+    ...blogEntries,
   ]
 }
