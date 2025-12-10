@@ -14,7 +14,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogs = await client.fetch(ALL_BLOGS_QUERY);
 
-  const blogEntries: MetadataRoute.Sitemap = blogs.map((blog: { slug: string; lastModified: string }) => ({
+  const blogEntries: MetadataRoute.Sitemap = blogs
+  .filter((blog): blog is { slug: string; lastModified: string } => blog.slug !== null)
+  .map((blog) => ({
     url: `${baseUrl}/blog/${blog.slug}`,
     lastModified: new Date(blog.lastModified).toISOString(),
     changeFrequency: "monthly" as const,
