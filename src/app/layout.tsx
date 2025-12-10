@@ -5,6 +5,7 @@ import Header from "../components/organisms/Header";
 import { ThemeProvider } from "../components/molecules/ThemeProvider";
 import Footer from "../components/organisms/Footer";
 import { Toaster } from "sonner";
+import { SanityLive } from "@/sanity/live";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -75,6 +76,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </ThemeProvider>
+        <SanityLive />
       </body>
     </html>
   );
