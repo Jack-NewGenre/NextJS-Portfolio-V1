@@ -15,10 +15,27 @@ const BLOG_QUERY = defineQuery(`*[
   "date": coalesce(date, now()),
 }`);
 
+const BLOG_SLUGS_QUERY = defineQuery(`*[
+  _type == "blog" && 
+  defined(slug.current)
+]{
+  "slug": slug.current
+}`);
+
 const builder = createImageUrlBuilder(client)
 
 export function urlFor(source: SanityImageSource) {
   return builder.image(source)
+}
+
+export async function generateStaticParams() {
+  const blogs = await client.fetch(BLOG_SLUGS_QUERY);
+  
+  return blogs
+    .filter((blog: { slug: string | null }) => blog.slug !== null)
+    .map((blog: { slug: string | null }) => ({
+      slug: blog.slug as string,
+    }));
 }
 
 export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }) => {

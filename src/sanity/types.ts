@@ -218,6 +218,11 @@ export type BLOG_QUERYResult = {
   publishedAt?: string;
   date: string;
 } | null;
+// Variable: BLOG_SLUGS_QUERY
+// Query: *[  _type == "blog" &&   defined(slug.current)]{  "slug": slug.current}
+export type BLOG_SLUGS_QUERYResult = Array<{
+  slug: string | null;
+}>;
 
 // Source: ../../Personal/portfolio/src/app/(pages)/blog/page.tsx
 // Variable: BLOGLIST_QUERY
@@ -263,11 +268,21 @@ export type BLOGLIST_QUERYResult = Array<{
   publishedAt: string;
 }>;
 
+// Source: ../../Personal/portfolio/src/app/sitemap.ts
+// Variable: ALL_BLOGS_QUERY
+// Query: *[  _type == "blog" && defined(slug.current)]{  "slug": slug.current,  "lastModified": coalesce(_updatedAt, _createdAt, now())} | order(lastModified desc)
+export type ALL_BLOGS_QUERYResult = Array<{
+  slug: string | null;
+  lastModified: string;
+}>;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[\n    _type == \"blog\" &&\n    slug.current == $slug\n  ][0]{\n  ...,\n  \"date\": coalesce(date, now()),\n}": BLOG_QUERYResult;
+    "*[\n  _type == \"blog\" && \n  defined(slug.current)\n]{\n  \"slug\": slug.current\n}": BLOG_SLUGS_QUERYResult;
     "*[\n  _type == \"blog\"\n  && defined(slug.current)\n]{\n  ...,\n  \"publishedAt\": coalesce(date, now()),\n}": BLOGLIST_QUERYResult;
+    "*[\n  _type == \"blog\" && defined(slug.current)\n]{\n  \"slug\": slug.current,\n  \"lastModified\": coalesce(_updatedAt, _createdAt, now())\n} | order(lastModified desc)": ALL_BLOGS_QUERYResult;
   }
 }
