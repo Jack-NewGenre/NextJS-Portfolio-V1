@@ -226,7 +226,7 @@ export type BLOG_SLUGS_QUERYResult = Array<{
 
 // Source: ../../Personal/portfolio/src/app/(pages)/blog/page.tsx
 // Variable: BLOGLIST_QUERY
-// Query: *[  _type == "blog"  && defined(slug.current)]{  ...,  "publishedAt": coalesce(date, now()),}
+// Query: *[  _type == "blog"  && defined(slug.current)]{  ...,  "date": coalesce(date, now()),}
 export type BLOGLIST_QUERYResult = Array<{
   _id: string;
   _type: "blog";
@@ -265,7 +265,8 @@ export type BLOGLIST_QUERYResult = Array<{
     _type: "block";
     _key: string;
   }>;
-  publishedAt: string;
+  publishedAt?: string;
+  date: string;
 }>;
 
 // Source: ../../Personal/portfolio/src/app/sitemap.ts
@@ -282,7 +283,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[\n    _type == \"blog\" &&\n    slug.current == $slug\n  ][0]{\n  ...,\n  \"date\": coalesce(date, now()),\n}": BLOG_QUERYResult;
     "*[\n  _type == \"blog\" && \n  defined(slug.current)\n]{\n  \"slug\": slug.current\n}": BLOG_SLUGS_QUERYResult;
-    "*[\n  _type == \"blog\"\n  && defined(slug.current)\n]{\n  ...,\n  \"publishedAt\": coalesce(date, now()),\n}": BLOGLIST_QUERYResult;
+    "*[\n  _type == \"blog\"\n  && defined(slug.current)\n]{\n  ...,\n  \"date\": coalesce(date, now()),\n}": BLOGLIST_QUERYResult;
     "*[\n  _type == \"blog\" && defined(slug.current)\n]{\n  \"slug\": slug.current,\n  \"lastModified\": coalesce(_updatedAt, _createdAt, now())\n} | order(lastModified desc)": ALL_BLOGS_QUERYResult;
   }
 }

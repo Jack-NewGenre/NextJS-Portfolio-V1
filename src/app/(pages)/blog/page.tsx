@@ -14,7 +14,7 @@ const BLOGLIST_QUERY = defineQuery(`*[
   && defined(slug.current)
 ]{
   ...,
-  "publishedAt": coalesce(date, now()),
+  "date": coalesce(date, now()),
 }`);
 
 const builder = createImageUrlBuilder(client)
@@ -43,7 +43,7 @@ export default async function BlogIndexPage({
         <ul className="flex flex-col">
           {blog.map((b) => {
             const imageUrl = b.image ? urlFor(b.image).width(600).height(400).url() : null;
-            const published = new Date(b.publishedAt).toLocaleDateString('en-US', {
+            const published = new Date(b.publishedAt ?? Date.now()).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'short',
               day: 'numeric'
