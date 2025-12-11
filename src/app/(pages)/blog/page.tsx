@@ -1,4 +1,4 @@
-import { defineQuery, PortableText } from "next-sanity";
+import { defineQuery } from "next-sanity";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { client } from "@/sanity/client";
@@ -60,8 +60,7 @@ export default async function BlogIndexPage({
                     <div className="flex flex-col gap-2 w-full py-4 px-0 md:px-8 md:w-2/3">
                       <h2 className="text-2xl">{b.name}</h2>
                       <p className="text-sm opacity-70">{published}</p>
-                      { /* <p className="text-sm opacity-70">{description}</p>
-                      <PortableText value={b.details || []} /> */ }
+                      { /* <PortableText value={b.details || []} /> */ }
                       <Button className="mt-2 w-max group" variant="default">Read Article <ArrowRight className="rotate-0 group-hover:-rotate-45 transition-all duration-300" /></Button>
                     </div>
                   </Link>

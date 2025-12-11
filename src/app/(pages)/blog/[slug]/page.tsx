@@ -7,6 +7,8 @@ import { createImageUrlBuilder, type SanityImageSource } from '@sanity/image-url
 import { sanityFetch } from "@/sanity/live";
 import Image from "next/image";
 
+export const revalidate = 60;
+
 const BLOG_QUERY = defineQuery(`*[
     _type == "blog" &&
     slug.current == $slug
