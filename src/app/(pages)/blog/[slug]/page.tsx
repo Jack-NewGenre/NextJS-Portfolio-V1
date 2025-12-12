@@ -8,6 +8,7 @@ import { sanityFetch } from "@/sanity/live";
 import Image from "next/image";
 
 export const revalidate = 60;
+export const dynamicParams = true;
 
 const BLOG_QUERY = defineQuery(`*[
     _type == "blog" &&
