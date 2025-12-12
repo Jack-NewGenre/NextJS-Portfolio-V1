@@ -9,9 +9,6 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
-export const revalidate = 60;
-export const dynamicParams = true;
-
 const BLOGLIST_QUERY = defineQuery(`*[
   _type == "blog"
   && defined(slug.current)
@@ -31,6 +28,7 @@ export default async function BlogListItem({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+
   const { data: blog } = await sanityFetch({
     query: BLOGLIST_QUERY,
     params: await params,
