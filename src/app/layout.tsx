@@ -30,7 +30,6 @@ export const metadata: Metadata = {
   description: "Jack is a creative developer at New Genre, presenting a Next.js portfolio that highlights clean design, modern performance, and thoughtful digital craftsmanship across every project.",
   keywords: ['Full stack developer', 'React', 'Next.js'],
   creator: 'Jack Cox',
-  themeColor: "#fff",
   openGraph: {
     title: "Jack Cox Portfolio",
     description: "Jack is a creative developer at New Genre, presenting a Next.js portfolio that highlights clean design, modern performance, and thoughtful digital craftsmanship across every project.",

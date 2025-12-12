@@ -6,8 +6,8 @@ import { createImageUrlBuilder, type SanityImageSource } from '@sanity/image-url
 
 import { sanityFetch } from "@/sanity/live";
 import Image from "next/image";
-
-export const revalidate = 60;
+import { Suspense } from "react";
+import { connection } from "next/server";
 
 const BLOG_QUERY = defineQuery(`*[
     _type == "blog" &&
@@ -63,6 +63,7 @@ export default async function BlogPostPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+
   const { data: blog } = await sanityFetch({
     query: BLOG_QUERY,
     params: await params,
@@ -82,20 +83,21 @@ export default async function BlogPostPage({
   return (
     <div className="pt-40 px-4 md:px-8 pb-16 bg-background w-full mx-auto">
       <div className="w-full max-w-4xl mx-auto flex flex-col gap-6">
-
-        <div className="mb-4">
-          <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
-            ← Back to Blog
-          </Link>
-        </div>
-        {imageUrl && (
-          <Image src={imageUrl} alt={`${name} thumbnail`} width={1200} height={500} className="w-full max-h-96 object-cover" />
-        )}
-        <h1 className="text-4xl font-bold">{name}</h1>
-        {published && <p className="text-sm opacity-60">{published}</p>}
-        <div className="blogContent">
-          <PortableText value={details || []} />
-        </div>
+          <div className="mb-4">
+            <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+              ← Back to Blog
+            </Link>
+          </div>
+          <Suspense fallback={<div>Loading...</div>}>
+            {imageUrl && (
+              <Image src={imageUrl} alt={`${name} thumbnail`} width={1200} height={500} className="w-full max-h-96 object-cover" />
+            )}
+            <h1 className="text-4xl font-bold">{name}</h1>
+            {published && <p className="text-sm opacity-60">{published}</p>}
+            <div className="blogContent">
+              <PortableText value={details || []} />
+            </div>
+        </Suspense>
       </div>
     </div>
   );
